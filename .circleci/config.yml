@@ -10,7 +10,7 @@ executors:
     resource_class: medium
   ubuntu-2204-vm-nixos:
     machine:
-      image: ubuntu-2204
+      image: ubuntu-2204-vm-nixos
     resource_class: medium
       
 
