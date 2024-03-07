@@ -81,6 +81,7 @@ basic_docker_build: &basic_docker_build
     echo "RUN echo hello" >> $dockerfile
     docker build -f $dockerfile --tag throwaway:$CIRCLE_BUILD_NUM .
     docker run --rm throwaway:$CIRCLE_BUILD_NUM
+    docker image inspect throwaway:$CIRCLE_BUILD_NUM | jq ".[0].Os, .[0].Architecture"
 
 contexts_defaults: &contexts_defaults
   docker: [{image: 'alpine:latest'}]
