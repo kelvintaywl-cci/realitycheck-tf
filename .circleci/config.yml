@@ -71,7 +71,7 @@ commands:
                   $job.executor.resource_class | Select-String -Pattern "<<parameters.resource_class>>"
 
 remote_docker_defaults: &remote_docker_defaults
-  docker: [{image: 'docker:17.06-git'}]
+  docker: [{image: 'cimg/base:current'}]
 
 basic_docker_build: &basic_docker_build
   name: "Build a really basic docker image"
@@ -216,7 +216,7 @@ jobs:
     <<: *remote_docker_defaults
     steps:
       - run: which docker
-      - run: docker -v
+      - run: docker version
       - setup_remote_docker
       - run:
           <<: *basic_docker_build
@@ -226,7 +226,7 @@ jobs:
     <<: *remote_docker_defaults
     steps:
       - run: which docker
-      - run: docker -v
+      - run: docker version
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
